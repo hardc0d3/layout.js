@@ -4,15 +4,29 @@
     <title>Sample templateq.js site</title>
       <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
       <script src="src/layout.js"></script> 
+<style type="text/css">
+
+div {
+border-style: solid;
+border-width: 1px;
+padding: 2px;
+margin: 2px;
+}
+
+</style>
       <script>
         window.onload = function(){
           l = new Layoutjs(); 
           i = l.bind(l.include,l);
+          
   
   /* http <method>, loading <content-xml>, and eval <content-js>,
    *  into html element with id <container-id> , <async>
    */
-          i('GET','some1.html','some1.js','content',true);
+          i('GET','some1.html','some1.js','content',false);
+          i('GET','footer.html',null,'footer',false);
+          i('GET','header.html',null,'header',false);
+          i('GET','some2.html','some2.js','content2',false);
 
         };
       </script>
@@ -21,6 +35,10 @@
     <body id="main-body">
         <div id="header"></div>
         <div id="content"></div>
+        <div id="content2"></div>
+        <div id="clicker">
+            <a href="click.html" onclick="i('GET','click.html','click.js','clicker',false); return false;">click.html</a>
+        </div>
         <div id="footer"></div>
     </body>
 

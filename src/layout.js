@@ -54,6 +54,7 @@ Layoutjs.prototype.bind = function (func, thisVal) {
 };
 
 function Layoutjs_ajaxjs (method,urijs,async){
+   //  if( req == null ) { return false; }
      if(window.XMLHttpRequest){
          req = new XMLHttpRequest();
       }
@@ -64,11 +65,8 @@ function Layoutjs_ajaxjs (method,urijs,async){
        if (req.readyState === 4) {
        //TODO: implement more different statuses and err handling 
        if (req.status === 200 ){
-                 //alert(req.responseText);
-                 //element = document.getElementById(target);
-                 //document.getElementById(target).innerHTML = req.responseText;
-                 //callback();
                  eval(req.responseText);
+                 req = null; //!
 
         } else {
               //;
@@ -91,21 +89,19 @@ Layoutjs.prototype.include = function(method,urixml,urijs,target,async){
        if (req.readyState === 4) {
        //TODO: implement more different statuses and handling 
        if (req.status === 200 ){
-                 //alert(req.responseText);
                  element = document.getElementById(target);
-                 //document.getElementById(target).innerHTML = req.responseText;
-                 //callback();
                  element.innerHTML = req.responseText;
                  if( urijs != null){
                      Layoutjs_ajaxjs(method, urijs, async);
                  }
-                 return false;
+                 req = null;
                  
         } else {
               //;
               }
      } else
-     { /*not ready todo*/; }
+     { /*not ready todo*/;
+     }
     }
     req.open(method,urixml,async);
     req.send(); 
