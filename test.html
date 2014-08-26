@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sample templateq.js site</title>
+      <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+      <script src="src/layout.js"></script> 
+      <script>
+        window.onload = function(){
+          l = new Layoutjs(); 
+          i = l.bind(l.include,l);
+  
+  /* http <method>, loading <content-xml>, and eval <content-js>,
+   *  into html element with id <container-id> , <async>
+   */
+          i('GET','some1.html','some1.js','content',true);
+
+        };
+      </script>
+  </head>
+    
+    <body id="main-body">
+        <div id="header"></div>
+        <div id="content"></div>
+        <div id="footer"></div>
+    </body>
+
+</html>
