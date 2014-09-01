@@ -27,6 +27,12 @@ margin: 2px;
           i('GET','footer.html',null,'footer',false);
           i('GET','header.html','header.js','header',false);
           i('GET','some2.html','some2.js','content2',false);
+          l.load('GET','object.json',false, function (data){
+            data = l.evaljson();
+            alert(data.name)
+           }
+          );
+
 
         };
       </script>

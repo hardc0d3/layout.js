@@ -78,6 +78,35 @@ function Layoutjs_ajaxjs (method,urijs,async){
     req.send();
 }
 
+Layoutjs.prototype.evaljson =  function (jsonstr){
+    return eval('('+req.responseText+')');
+}
+
+
+Layoutjs.prototype.load = function (method,urijs,async,onready){
+//function Layoutjs_ajaxjson (method,urijs,async){
+     if(window.XMLHttpRequest){
+         req = new XMLHttpRequest();
+      }
+    else{
+        return null;
+     }
+    req.onreadystatechange = function(){
+       if (req.readyState === 4) {
+       //TODO: implement more different statuses and err handling 
+       if (req.status === 200 ){
+                 onready('('+req.responseText+')');
+        } else {
+              //;
+              }
+     } else
+     { /*not ready */; }
+    }
+    req.open(method,urijs,async);
+    req.send();
+}
+
+
 Layoutjs.prototype.include = function(method,urixml,urijs,target,async){
      if(window.XMLHttpRequest){
          req = new XMLHttpRequest();
