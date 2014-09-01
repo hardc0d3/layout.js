@@ -105,6 +105,41 @@ Layoutjs.prototype.include = function(method,urixml,urijs,target,async){
     }
     req.open(method,urixml,async);
     req.send(); 
-};  
+}; 
+
+Layoutjs.prototype.text = function(method,urixml,urijs,target,async){
+     if(window.XMLHttpRequest){
+         req = new XMLHttpRequest();
+      }
+    else{
+        return null;
+     }
+    req.onreadystatechange = function(){
+       if (req.readyState === 4) {
+       //TODO: implement more different statuses and handling 
+       if (req.status === 200 ){
+                 e = document.getElementById(target);
+                 if ('textContent' in e) { 
+                     e.textContent = req.responseText;
+                 }
+                 else { //ie7,8 
+                     e.innerText = req.responseText;
+                 }
+                 if( urijs != null){
+                     Layoutjs_ajaxjs(method, urijs, async);
+                 }
+                 req = null;
+
+        } else {
+              //;
+              }
+     } else
+     { /*not ready todo*/;
+     }
+    }
+    req.open(method,urixml,async);
+    req.send();
+};
+ 
 
 
