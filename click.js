@@ -1,1 +1,1 @@
-i('GET','clickdiv.html',null,'divclick',false);
+i('GET','clickdiv.html',null,'divclick',true);

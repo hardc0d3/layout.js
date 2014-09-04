@@ -20,21 +20,15 @@ margin: 2px;
         <div id="header"></div>
         <div id="content"></div>
         <div id="content2"></div>
-        <div id="clicker">
-            <a href="click.html" onclick="i('GET','click.html','click.js','clicker',true); return false;">click.html</a>
-        </div>
-
         <div id="footer"></div>
         <script>
 
   l = new Layoutjs(); 
-  i = l.bind(l.include,l);
+  i = l.bind(l.include2,l);
+  i('GET','header.html','header.js','header',true); 
   i('GET','some1.html','some1.js','content',true);
-  i('GET','footer.html',null,'footer',true);
-  i('GET','header.html','header.js','header',true);
-  i('GET','some2.html','some2.js','content2',true);
-        
-</script>
+  i('GET','some1-1.html','some1-1.js','content2',true);
+        </script>
     </body>
 
 </html>
